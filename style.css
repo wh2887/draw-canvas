@@ -4,5 +4,13 @@
   box-sizing: border-box;
 }
 #canvas {
-  display: block;
+  display: inline-block;
+}
+.option {
+  border: 1px solid red;
+  position: absolute;
+  height: 10vh;
+}
+.option > button {
+  height: 25px;
 }

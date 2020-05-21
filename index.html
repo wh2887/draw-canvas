@@ -9,22 +9,29 @@
     <title>Canvas画板v1</title>
   </head>
   <body>
+    <div class="option">
+      <button onclick="red()">红色</button>
+      <button onclick="blue()">蓝色</button>
+      <button onclick="yellow()">黄色</button>
+      <button onclick="white()">橡皮擦</button>
+    </div>
     <canvas id="canvas"> </canvas>
     <script>
       let canvas = document.getElementById("canvas");
       canvas.width = document.documentElement.clientWidth;
-      canvas.height = document.documentElement.clientHeight;
+      canvas.height = document.documentElement.clientHeight - 10;
       let ctx = canvas.getContext("2d");
       let painting = false;
       let last;
       let supportsTouch = "ontouchstart" in document.documentElement;
+      let strokeStyle = "black";
 
       function draw(x1, y1, x2, y2) {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineWidth = 4;
         ctx.lineCap = "round";
-        ctx.strokeStyle = "green";
+        ctx.strokeStyle = strokeStyle;
         ctx.lineTo(x2, y2);
         ctx.closePath();
         ctx.stroke();
@@ -64,6 +71,20 @@
         draw(last[0], last[1], x, y);
         last = [x, y];
       };
+      /*改变颜色*/
+
+      function red() {
+        strokeStyle = "red";
+      }
+      function blue() {
+        strokeStyle = "blue";
+      }
+      function yellow() {
+        strokeStyle = "yellow";
+      }
+      function white() {
+        strokeStyle = "white";
+      }
     </script>
   </body>
 </html>
